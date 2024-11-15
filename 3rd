@@ -31,4 +31,14 @@ local Window = Rayfield:CreateWindow({
       Key = {"sonic"}
    }
 })
-local Tab = Window:CreateTab("1st badic", 4483362458)
+local Tab = Window:CreateTab("1st basic", 4483362458)
+local Slider = Tab:CreateSlider({
+   Name = "Walk Speed",
+   Range = {0, 300},
+   Increment = 10,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "Slider1",
+   Callback = function(Value)
+   end,
+})
