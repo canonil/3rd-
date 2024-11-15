@@ -3,7 +3,7 @@ local Window = Rayfield:CreateWindow({
    Name = "Basics",
    LoadingTitle = "Rayfield Interface Suite",
    LoadingSubtitle = "by Sirius",
-   Theme = "Dark Blue",
+   Theme = "DarkBlue",
 
    DisableRayfieldPrompts = false,
    DisableBuildWarnings = false, -- 
