@@ -10,7 +10,7 @@ local Window = Rayfield:CreateWindow({
 
    ConfigurationSaving = {
       Enabled = true,
-      FolderName = nil, -- Create a custom folder for your hub/game
+      FolderName = nil,
       FileName = "Big Hub"
    },
 
@@ -24,10 +24,11 @@ local Window = Rayfield:CreateWindow({
    KeySettings = {
       Title = "Untitled",
       Subtitle = "Key System",
-      Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+      Note = "No method of obtaining the key is provided",
       FileName = "Key",
       SaveKey = true,
       GrabKeyFromSite = false,
       Key = {"sonic"}
    }
 })
+local Tab = Window:CreateTab("1st badic", 4483362458)
