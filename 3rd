@@ -1,81 +1,33 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Window = Rayfield:CreateWindow({
+   Name = "Basics",
+   LoadingTitle = "Rayfield Interface Suite",
+   LoadingSubtitle = "by Sirius",
+   Theme = "Dark Blue",
 
--- Create Tab and Section
-local Tab = Window:MakeTab({
-	Name = "Tab 1",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- 
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Big Hub"
+   },
+
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+
+   KeySystem = true,
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"sonic"}
+   }
 })
-local Section = Tab:AddSection({
-	Name = "Player Controls"
-})
-
--- Walk Speed Slider
-Tab:AddSlider({
-	Name = "Walk Speed",
-	Min = 16, -- Default Roblox walk speed
-	Max = 100, -- Maximum walk speed
-	Default = 16,
-	Color = Color3.fromRGB(255, 0, 0),
-	Increment = 1,
-	ValueName = "Speed",
-	Callback = function(value)
-		local player = game.Players.LocalPlayer
-		if player and player.Character and player.Character:FindFirstChild("Humanoid") then
-			player.Character.Humanoid.WalkSpeed = value
-		end
-	end
-})
-
--- Fly Toggle Variables
-local flying = false -- Keeps track of the flying state
-local flyConnection
-
--- Fly Button
-Tab:AddButton({
-	Name = "Fly",
-	Callback = function()
-		local player = game.Players.LocalPlayer
-		if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-			local humanoidRootPart = player.Character.HumanoidRootPart
-
-			if not flying then
-				-- Enable flying
-				flying = true
-				humanoidRootPart.Anchored = false -- To allow free movement
-				flyConnection = game:GetService("RunService").RenderStepped:Connect(function()
-					local userInputService = game:GetService("UserInputService")
-					local moveVector = Vector3.new()
-
-					-- Fly movement (key inputs)
-					if userInputService:IsKeyDown(Enum.KeyCode.W) then
-						moveVector = moveVector + Vector3.new(0, 1, 0) -- Move up
-					end
-					if userInputService:IsKeyDown(Enum.KeyCode.S) then
-						moveVector = moveVector + Vector3.new(0, -1, 0) -- Move down
-					end
-					if userInputService:IsKeyDown(Enum.KeyCode.A) then
-						moveVector = moveVector + Vector3.new(-1, 0, 0) -- Move left
-					end
-					if userInputService:IsKeyDown(Enum.KeyCode.D) then
-						moveVector = moveVector + Vector3.new(1, 0, 0) -- Move right
-					end
-
-					-- Apply movement
-					humanoidRootPart.CFrame = humanoidRootPart.CFrame + moveVector * 0.5
-				end)
-			else
-				-- Disable flying
-				flying = false
-				if flyConnection then
-					flyConnection:Disconnect()
-					flyConnection = nil
-				end
-			end
-		end
-	end
-})
-
--- Initialize UI
-OrionLib:Init()
