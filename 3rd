@@ -55,11 +55,3 @@ local Slider = Tab:CreateSlider({
       game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
    end,
 })
-
-local Button = Tab:CreateButton({
-   Name = "Button Example",
-   Callback = function()
-   local RootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-   RootPart.CFrame = workspace:GetChildren()[219].CFrame
-   end,
-})
