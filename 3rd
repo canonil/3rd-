@@ -34,11 +34,24 @@ local Window = Rayfield:CreateWindow({
 local Tab = Window:CreateTab("1st basic", 4483362458)
 local Slider = Tab:CreateSlider({
    Name = "Walk Speed",
-   Range = {0, 300},
-   Increment = 10,
+   Range = {0, 1000},
+   Increment = 1,
    Suffix = "Speed",
    CurrentValue = 16,
    Flag = "Slider1",
    Callback = function(Value)
+      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+   end,
+})
+
+local Slider = Tab:CreateSlider({
+   Name = "JumpPower",
+   Range = {0, 300},
+   Increment = 1,
+   Suffix = "JumpPower",
+   CurrentValue = 50,
+   Flag = "Slider2",
+   Callback = function(Value)
+      game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
    end,
 })
