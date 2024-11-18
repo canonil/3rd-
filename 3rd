@@ -6,7 +6,7 @@ local Window = Rayfield:CreateWindow({
    Theme = "DarkBlue",
 
    DisableRayfieldPrompts = false,
-   DisableBuildWarnings = false, -- 
+   DisableBuildWarnings = false,
 
    ConfigurationSaving = {
       Enabled = true,
@@ -55,4 +55,3 @@ local Slider = Tab:CreateSlider({
       game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
    end,
 })
-
